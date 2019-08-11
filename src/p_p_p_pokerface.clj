@@ -1,13 +1,22 @@
 (ns p-p-p-pokerface)
 
 (defn rank [card]
-  nil)
+  (let [[fst] card 
+        rank1 {\T 10 \J 11 \Q 12 \K 13 \A 14}]
+        (if (Character/isDigit fst) (Integer/valueOf (str fst)) (rank1 fst))
+    )
+  )
 
 (defn suit [card]
-  nil)
+   (let [[_ snd] card] (str snd)))
 
 (defn pair? [hand]
-  nil)
+
+  (if 
+      (not (empty? (filter (fn [x] (== x 2))
+      (vals (frequencies (map rank hand)))))) true false)
+    
+  )
 
 (defn three-of-a-kind? [hand]
   nil)
